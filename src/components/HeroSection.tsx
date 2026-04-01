@@ -79,7 +79,7 @@ export function HeroSection() {
           <span className="text-sm font-medium text-primary">Веб-студия полного цикла · НейроВид</span>
         </div>
 
-        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6 animate-fade-in-up text-balance">
+        <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-4 sm:mb-6 animate-fade-in-up text-balance">
           Сайты, которые{" "}
           <span className="text-primary relative inline-block">
             продают
@@ -101,14 +101,14 @@ export function HeroSection() {
           </span>
         </h1>
 
-        <p className="text-xl sm:text-2xl text-muted-foreground mb-10 max-w-3xl mx-auto animate-fade-in-up animate-delay-100 leading-relaxed">
+        <p className="text-base sm:text-xl md:text-2xl text-muted-foreground mb-8 sm:mb-10 max-w-3xl mx-auto animate-fade-in-up animate-delay-100 leading-relaxed">
           Разрабатываем красивые и быстрые сайты, лендинги и веб-приложения. От идеи до запуска — под ключ, в срок, с результатом.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up animate-delay-200 mb-12">
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center animate-fade-in-up animate-delay-200 mb-10 sm:mb-12">
           <Button
             size="lg"
-            className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 py-6 text-lg group shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all"
+            className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold w-full sm:w-auto px-8 py-5 sm:py-6 text-base sm:text-lg group shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all"
             asChild
           >
             <a href="#contact">
@@ -119,14 +119,14 @@ export function HeroSection() {
           <Button
             size="lg"
             variant="outline"
-            className="border-2 border-primary/20 text-foreground hover:bg-primary/5 hover:border-primary font-semibold px-8 py-6 text-lg backdrop-blur-sm bg-transparent"
+            className="border-2 border-primary/20 text-foreground hover:bg-primary/5 hover:border-primary font-semibold w-full sm:w-auto px-8 py-5 sm:py-6 text-base sm:text-lg backdrop-blur-sm bg-transparent"
             asChild
           >
             <a href="#portfolio">Смотреть работы</a>
           </Button>
         </div>
 
-        <div className="flex flex-wrap justify-center items-center gap-8 text-sm text-muted-foreground animate-fade-in-up animate-delay-300">
+        <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-8 text-sm text-muted-foreground animate-fade-in-up animate-delay-300">
           <div className="flex items-center gap-2">
             <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
             <span>50+ проектов</span>

@@ -52,10 +52,10 @@ export function ServicesSection() {
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4 text-balance">
           Всё, что нужно для <span className="text-primary">роста онлайн</span>
         </h2>
-        <p className="text-center text-muted-foreground mb-12 max-w-3xl mx-auto text-pretty leading-relaxed text-lg">
+        <p className="text-center text-muted-foreground mb-8 sm:mb-12 max-w-3xl mx-auto text-pretty leading-relaxed text-sm sm:text-lg">
           Закрываем весь цикл: от стратегии и дизайна до разработки и вывода в топ поисковиков. Один партнёр — полный результат.
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {services.map((service, index) => (
             <Card
               key={index}

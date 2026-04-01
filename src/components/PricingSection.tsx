@@ -69,13 +69,13 @@ export function PricingSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-6 pt-2">
           {pricingTiers.map((tier, index) => (
             <Card
               key={index}
               className={`relative group ${
                 tier.highlighted
-                  ? "border-primary shadow-xl scale-105 bg-gradient-to-b from-background to-primary/5"
+                  ? "border-primary shadow-xl md:scale-105 bg-gradient-to-b from-background to-primary/5"
                   : "hover:border-primary/50 hover:shadow-lg"
               } transition-all duration-300`}
             >
