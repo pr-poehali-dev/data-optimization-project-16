@@ -7,13 +7,12 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <h3 className="text-xl font-bold mb-4">
-              <span className="text-primary font-black">{`{`}</span>
-              Code<span className="text-primary">Craft</span>
-              <span className="text-primary font-black">{`}`}</span>
+              <span className="text-primary font-black">✦</span>
+              {" "}Нейро<span className="text-primary">Вид</span>
             </h3>
             <p className="text-sm text-muted-foreground leading-relaxed">
               Создаём сайты, которые работают на ваш бизнес.<br />
-              © 2025 CodeCraft. Все права защищены.
+              © 2025 НейроВид. Все права защищены.
             </p>
           </div>
 

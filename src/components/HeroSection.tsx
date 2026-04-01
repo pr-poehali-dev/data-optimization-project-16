@@ -76,7 +76,7 @@ export function HeroSection() {
       <div className="container mx-auto text-center max-w-5xl relative z-10">
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6 animate-fade-in-up">
           <Sparkles className="w-4 h-4 text-primary" />
-          <span className="text-sm font-medium text-primary">Веб-студия полного цикла · CodeCraft</span>
+          <span className="text-sm font-medium text-primary">Веб-студия полного цикла · НейроВид</span>
         </div>
 
         <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6 animate-fade-in-up text-balance">

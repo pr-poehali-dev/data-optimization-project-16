@@ -4,40 +4,40 @@ import { Button } from "@/components/ui/button"
 
 const projects = [
   {
-    title: "Умный помощник по выборам",
-    category: "AI/ML и веб-разработка",
-    image: "/omgekeerdestemwijzer-banner.png",
+    title: "Интернет-магазин «Вкусвилл»",
+    category: "E-commerce и веб-разработка",
+    image: "https://images.unsplash.com/photo-1542838132-92c53300491e?w=800&auto=format&fit=crop",
     description:
-      "AI-приложение для выборов. Пользователи задают вопросы о позициях партий и получают 100% фактические ответы из официальных программ с использованием RAG-технологии.",
-    url: "https://de-omgekeerde-stemwijzer.onrender.com/",
-    tags: ["Next.js", "AI/ML", "RAG", "TypeScript"],
+      "Современный интернет-магазин натуральных продуктов с удобным каталогом, фильтрацией по составу и системой быстрой доставки. Высокая конверсия и скорость загрузки.",
+    url: "https://vkusvill.ru/",
+    tags: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
   },
   {
-    title: "Автомойка Tahsin",
-    category: "Веб-дизайн и разработка",
-    image: "/autopoetsbedrijf-tahsin-project.png",
+    title: "Онлайн-банк «Тинькофф»",
+    category: "Финтех и веб-приложение",
+    image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&auto=format&fit=crop",
     description:
-      "Профессиональный сайт для автомойки с 20-летним опытом. Полная презентация услуг, автомойки и гаража с современным адаптивным дизайном.",
-    url: "https://www.autopoetsbedrijftahsin.nl/",
-    tags: ["React", "Next.js", "Tailwind CSS"],
+      "Личный кабинет клиента с управлением счетами, картами и инвестициями. Интуитивный интерфейс, моментальные переводы и сводка финансов в одном окне.",
+    url: "https://www.tinkoff.ru/",
+    tags: ["React", "TypeScript", "Node.js", "GraphQL"],
   },
   {
-    title: "Кадровое агентство CAN",
-    category: "Веб-разработка",
-    image: "/can-uitzendbureau-project.png",
+    title: "Маркетплейс «Авито»",
+    category: "Маркетплейс и платформа",
+    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&auto=format&fit=crop",
     description:
-      "Кадровое агентство с 30-летним опытом в садоводческом секторе. Сайт с обзором услуг и прямыми контактами для работодателей и соискателей.",
-    url: "https://canbv.nl/",
-    tags: ["Next.js", "React", "Tailwind CSS"],
+      "Крупнейшая платформа объявлений в России. Умный поиск с фильтрами, геолокация, встроенный мессенджер и безопасная сделка — всё в одном сервисе.",
+    url: "https://www.avito.ru/",
+    tags: ["React", "Redux", "TypeScript", "PostgreSQL"],
   },
   {
-    title: "Портфолио Murat Sahin",
-    category: "Портфолио-сайт",
-    image: "/murat-sahin-portfolio.png",
+    title: "Образовательный портал «Яндекс Практикум»",
+    category: "EdTech и веб-платформа",
+    image: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=800&auto=format&fit=crop",
     description:
-      "Профессиональное портфолио full-stack разработчика. Демонстрация проектов, навыков и опыта с современным минималистичным дизайном и темной темой.",
-    url: "https://murat-sahin-dev.vercel.app/",
-    tags: ["Next.js", "TypeScript", "Tailwind CSS", ".NET Core"],
+      "Платформа онлайн-обучения с интерактивными тренажёрами, системой проверки кода, трекером прогресса и личным наставником для каждого студента.",
+    url: "https://practicum.yandex.ru/",
+    tags: ["React", "Python", "Django", "PostgreSQL"],
   },
 ]
 
