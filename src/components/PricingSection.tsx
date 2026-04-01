@@ -4,38 +4,40 @@ import { QuoteFormDialog } from "@/components/QuoteFormDialog"
 
 const pricingTiers = [
   {
-    name: "Базовый",
-    price: "99 900",
+    name: "Старт",
+    price: "49 900",
     features: [
-      "До 5 страниц",
+      "Лендинг до 5 секций",
       "Адаптивный дизайн",
       "Базовая SEO-оптимизация",
       "Форма обратной связи",
+      "Настройка хостинга",
       "1 месяц поддержки",
     ],
     highlighted: false,
   },
   {
-    name: "Про",
-    price: "249 900",
+    name: "Бизнес",
+    price: "149 900",
     features: [
-      "До 15 страниц",
-      "Премиум-дизайн",
+      "Многостраничный сайт",
+      "Уникальный UI/UX дизайн",
       "Расширенная SEO-оптимизация",
-      "Интеграция CMS",
-      "Функционал e-commerce",
+      "CMS для управления контентом",
+      "Аналитика и цели",
       "3 месяца поддержки",
     ],
     highlighted: true,
   },
   {
-    name: "Индивидуальный",
+    name: "Про",
     price: "По запросу",
     features: [
-      "Неограниченно страниц",
+      "Веб-приложение / SaaS",
       "Кастомный функционал",
-      "API-интеграции",
+      "API-интеграции и автоматизация",
       "Персональный менеджер",
+      "CI/CD и DevOps",
       "6 месяцев поддержки",
     ],
     highlighted: false,
@@ -60,10 +62,10 @@ export function PricingSection() {
             Прозрачные цены
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-balance">
-            Выберите <span className="text-primary">идеальный тариф</span> для вашего проекта
+            Честные цены — <span className="text-primary">никаких сюрпризов</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            От стартапов до крупного бизнеса — у нас есть подходящее решение
+            Выберите подходящий пакет или напишите — подберём решение под вашу задачу
           </p>
         </div>
 

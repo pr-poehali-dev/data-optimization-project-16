@@ -46,9 +46,14 @@ export function PortfolioSection() {
     <section id="portfolio" className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-balance">Наше портфолио</h2>
+          <div className="inline-block mb-4 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold">
+            Наши работы
+          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-balance">
+            Проекты, которыми <span className="text-primary">мы гордимся</span>
+          </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto text-pretty leading-relaxed">
-            Ознакомьтесь с подборкой наших последних проектов и узнайте, как мы помогаем бизнесу расти с помощью мощных цифровых решений.
+            Реальные проекты для реального бизнеса — от лендингов до AI-приложений. Каждый сделан с душой и нацелен на результат.
           </p>
         </div>
 
