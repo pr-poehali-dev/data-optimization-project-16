@@ -51,19 +51,17 @@ export function HeroSection() {
           </Button>
         </div>
 
-        <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 text-xs sm:text-sm text-muted-foreground animate-fade-in-up">
-          <div className="flex items-center gap-2">
-            <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-            <span>50+ проектов</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" style={{ animationDelay: "0.5s" }} />
-            <span>45+ клиентов</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" style={{ animationDelay: "1s" }} />
-            <span>3+ года опыта</span>
-          </div>
+        <div className="flex flex-wrap justify-center items-center gap-8 sm:gap-12 animate-fade-in-up">
+          {[
+            { value: "50+", label: "проектов" },
+            { value: "45+", label: "клиентов" },
+            { value: "3+", label: "года опыта" },
+          ].map((stat, i) => (
+            <div key={i} className="text-center">
+              <div className="text-3xl sm:text-4xl font-bold text-primary">{stat.value}</div>
+              <div className="text-xs sm:text-sm text-muted-foreground mt-1">{stat.label}</div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
