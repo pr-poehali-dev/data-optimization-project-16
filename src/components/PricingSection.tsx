@@ -5,7 +5,7 @@ import { QuoteFormDialog } from "@/components/QuoteFormDialog"
 const pricingTiers = [
   {
     name: "Старт",
-    price: "49 900",
+    price: "25 000",
     features: [
       "Лендинг до 5 секций",
       "Адаптивный дизайн",
@@ -18,7 +18,7 @@ const pricingTiers = [
   },
   {
     name: "Бизнес",
-    price: "149 900",
+    price: "80 000",
     features: [
       "Многостраничный сайт",
       "Уникальный UI/UX дизайн",
