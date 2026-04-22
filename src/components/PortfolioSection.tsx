@@ -4,13 +4,13 @@ import { Button } from "@/components/ui/button"
 
 const projects = [
   {
-    title: "Интернет-магазин «Вкусвилл»",
-    category: "E-commerce и веб-разработка",
-    image: "https://images.unsplash.com/photo-1542838132-92c53300491e?w=800&auto=format&fit=crop",
+    title: "Путешествия по Крыму",
+    category: "Туризм и тревел-гайд",
+    image: "https://cdn.poehali.dev/projects/3ac90158-e371-49c9-8dba-507fa6fdb827/files/fbeedf04-c064-4048-b096-ff9630606058.jpg",
     description:
-      "Современный интернет-магазин натуральных продуктов с удобным каталогом, фильтрацией по составу и системой быстрой доставки. Высокая конверсия и скорость загрузки.",
-    url: "https://vkusvill.ru/",
-    tags: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
+      "Туристический портал-путеводитель по Крымскому полуострову. Помогает путешественникам открыть лучшие маршруты, достопримечательности и получить незабываемые впечатления.",
+    url: "https://project-alpha-update-2--preview.poehali.dev/",
+    tags: ["React", "Vite", "TypeScript", "Tailwind CSS"],
   },
   {
     title: "Онлайн-банк «Тинькофф»",
