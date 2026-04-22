@@ -1,16 +1,11 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Layout, Palette, Share2, Search } from "lucide-react"
+import { Layout, Share2, Search } from "lucide-react"
 
 const services = [
   {
     icon: Layout,
     title: "Лендинги и сайты",
     description: "Продающие лендинги и корпоративные сайты с уникальным дизайном под ваш бизнес.",
-  },
-  {
-    icon: Palette,
-    title: "UI/UX дизайн",
-    description: "Интерфейсы, в которых пользователь совершает нужное действие легко и интуитивно.",
   },
   {
     icon: Share2,
