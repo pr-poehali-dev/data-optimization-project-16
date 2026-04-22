@@ -7,37 +7,25 @@ const projects = [
     title: "Путешествия по Крыму",
     category: "Туризм и тревел-гайд",
     image: "https://cdn.poehali.dev/projects/3ac90158-e371-49c9-8dba-507fa6fdb827/files/fbeedf04-c064-4048-b096-ff9630606058.jpg",
-    description:
-      "Туристический портал-путеводитель по Крымскому полуострову. Помогает путешественникам открыть лучшие маршруты, достопримечательности и получить незабываемые впечатления.",
     url: "https://project-alpha-update-2--preview.poehali.dev/",
-    tags: ["React", "Vite", "TypeScript", "Tailwind CSS"],
   },
   {
     title: "Легенды Баку",
     category: "Ресторан азербайджанской кухни",
     image: "https://cdn.poehali.dev/projects/3ac90158-e371-49c9-8dba-507fa6fdb827/files/9adb031e-a59d-439a-b836-8131e602294f.jpg",
-    description:
-      "Сайт ресторана азербайджанской кухни в Севастополе. Уютная атмосфера, фирменные блюда — люля-кебаб, плов, шашлык — и онлайн-бронирование столика.",
     url: "https://legendybaku.ru/",
-    tags: ["React", "Vite", "TypeScript", "Tailwind CSS"],
   },
   {
     title: "СоседМастер",
     category: "Маркетплейс услуг",
     image: "https://cdn.poehali.dev/projects/3ac90158-e371-49c9-8dba-507fa6fdb827/files/f5d670f5-07fb-4273-bf50-c2edf6d68158.jpg",
-    description:
-      "Гиперлокальный маркетплейс проверенных мастеров в вашем районе. Соединяет жителей с надёжными специалистами по ремонту и бытовым услугам.",
     url: "https://neighbor-help-app-1--preview.poehali.dev/",
-    tags: ["React", "Vite", "TypeScript", "Tailwind CSS"],
   },
   {
     title: "NeuraMind",
     category: "EdTech и AI-платформа",
     image: "https://cdn.poehali.dev/projects/3ac90158-e371-49c9-8dba-507fa6fdb827/files/972920c6-57da-49f1-ba7a-0899e3140f3d.jpg",
-    description:
-      "Образовательная платформа будущего по искусственному интеллекту, психологии и мотивации. Интерактивные курсы с персонализированным подходом для каждого студента.",
     url: "https://ai-learning-app--preview.poehali.dev/",
-    tags: ["React", "Vite", "TypeScript", "Tailwind CSS"],
   },
 ]
 
