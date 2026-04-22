@@ -10,12 +10,6 @@ const values = [
   { title: "Гибкость", description: "Быстрая адаптация под меняющиеся потребности" },
 ]
 
-const stats = [
-  { number: "50+", label: "Проектов" },
-  { number: "45+", label: "Довольных клиентов" },
-  { number: "30+", label: "Созданных логотипов" },
-  { number: "3+", label: "Года опыта" },
-]
 
 export function AboutSection() {
   return (
@@ -64,16 +58,7 @@ export function AboutSection() {
           ))}
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
-          {stats.map((stat, index) => (
-            <div key={index} className="text-center group cursor-default">
-              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-1.5 sm:mb-2 group-hover:scale-110 transition-transform">
-                {stat.number}
-              </div>
-              <div className="text-muted-foreground font-medium text-sm sm:text-base">{stat.label}</div>
-            </div>
-          ))}
-        </div>
+
       </div>
     </section>
   )
