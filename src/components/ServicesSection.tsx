@@ -1,5 +1,5 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Layout, Palette, Code, Share2, Target, Search } from "lucide-react"
+import { Layout, Palette, Share2, Search } from "lucide-react"
 
 const services = [
   {
@@ -15,22 +15,10 @@ const services = [
       "Продумываем каждый экран: от логики переходов до деталей интерфейса. Делаем так, чтобы пользователь совершал нужное действие легко и интуитивно.",
   },
   {
-    icon: Code,
-    title: "Веб-разработка",
-    description:
-      "Разрабатываем на React, Next.js и TypeScript. Код — чистый, сайты — быстрые. Настраиваем хостинг, CI/CD и поддерживаем после запуска.",
-  },
-  {
     icon: Share2,
     title: "Брендинг и соцсети",
     description:
       "Разрабатываем фирменный стиль, логотипы и визуальные материалы для соцсетей. Ваш бренд будет выглядеть профессионально на любой платформе.",
-  },
-  {
-    icon: Target,
-    title: "Конверсия и аналитика",
-    description:
-      "Настраиваем цели, воронки и A/B-тесты. Работаем над тем, чтобы сайт не просто выглядел хорошо, но и приводил реальных клиентов.",
   },
   {
     icon: Search,
