@@ -81,17 +81,9 @@ export function PortfolioSection() {
                   </Button>
                 </div>
               </div>
-              <CardContent className="p-4 sm:p-6">
-                <p className="text-xs sm:text-sm text-primary font-semibold mb-1.5 sm:mb-2">{project.category}</p>
-                <h3 className="text-base sm:text-xl font-bold mb-1.5 sm:mb-2 leading-snug">{project.title}</h3>
-                <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4">{project.description}</p>
-                <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                  {project.tags.map((tag, tagIndex) => (
-                    <span key={tagIndex} className="text-xs px-2 py-0.5 sm:py-1 rounded-full bg-muted text-muted-foreground">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
+              <CardContent className="p-4 sm:p-5">
+                <p className="text-xs text-primary font-semibold mb-1">{project.category}</p>
+                <h3 className="text-base sm:text-lg font-bold leading-snug">{project.title}</h3>
                 {/* Mobile: кнопка всегда видна */}
                 <div className="mt-4 sm:hidden">
                   <Button
