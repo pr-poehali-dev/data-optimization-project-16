@@ -219,7 +219,7 @@ function PlansModal({
               <p className="text-xs whitespace-nowrap" style={{ color: "var(--nf-muted)" }}>{plan.period}</p>
             </div>
             <div className="ml-auto text-right shrink-0">
-              <p className="font-bold text-lg whitespace-nowrap" style={{ color }}>{plan.price}</p>
+              <p className="font-bold text-lg whitespace-nowrap my-0" style={{ color }}>{plan.price}</p>
             </div>
           </div>
 
