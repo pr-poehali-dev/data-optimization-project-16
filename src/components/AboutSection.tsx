@@ -59,9 +59,7 @@ export function AboutSection() {
             <br />
             <span className="gradient-text">прозрачный процесс</span>
           </h2>
-          <p className="text-lg max-w-xl mx-auto" style={{ color: "var(--nf-muted)" }}>
-            Никаких чёрных ящиков. Вы знаете, что происходит на каждом шаге.
-          </p>
+
         </div>
 
         {/* Desktop: horizontal timeline */}
