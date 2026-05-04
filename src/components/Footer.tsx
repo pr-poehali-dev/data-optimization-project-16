@@ -94,13 +94,14 @@ export function Footer() {
                   <a
                     href="#services"
                     onClick={(e) => scrollTo("#services", e)}
-                    className="flex items-center justify-between text-sm transition-colors duration-200 group"
+                    className="flex items-center gap-1 text-sm transition-colors duration-200 group"
                     style={{ color: "var(--nf-muted)" }}
                     onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = p.color; }}
                     onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--nf-muted)"; }}
                   >
-                    <span>{p.label}</span>
-                    <span className="whitespace-nowrap font-medium" style={{ color: p.color }}>{p.price}</span>
+                    <span className="shrink-0">{p.label}</span>
+                    <span className="flex-1 border-b border-dashed mx-2" style={{ borderColor: "var(--nf-border)" }} />
+                    <span className="whitespace-nowrap font-medium shrink-0" style={{ color: p.color }}>{p.price}</span>
                   </a>
                 </li>
               ))}
