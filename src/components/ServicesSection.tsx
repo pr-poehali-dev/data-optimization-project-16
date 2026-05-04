@@ -209,17 +209,17 @@ function PlansModal({
         >
           <div className="flex items-center gap-3 mb-4">
             <div
-              className="w-10 h-10 rounded-xl flex items-center justify-center"
+              className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
               style={{ background: `${color}18` }}
             >
               <Icon name={plan.icon as any} size={18} style={{ color }} />
             </div>
-            <div>
+            <div className="min-w-0">
               <p className="font-bold text-base" style={{ color: "var(--nf-text)" }}>{plan.label}</p>
-              <p className="text-xs" style={{ color: "var(--nf-muted)" }}>{plan.period}</p>
+              <p className="text-xs whitespace-nowrap" style={{ color: "var(--nf-muted)" }}>{plan.period}</p>
             </div>
-            <div className="ml-auto text-right">
-              <p className="font-bold text-lg" style={{ color }}>{plan.price}</p>
+            <div className="ml-auto text-right shrink-0">
+              <p className="font-bold text-lg whitespace-nowrap" style={{ color }}>{plan.price}</p>
             </div>
           </div>
 

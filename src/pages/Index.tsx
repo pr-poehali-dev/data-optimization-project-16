@@ -3,9 +3,6 @@ import { HeroSection } from "@/components/HeroSection"
 import { ServicesSection } from "@/components/ServicesSection"
 import { AboutSection } from "@/components/AboutSection"
 import { PortfolioSection } from "@/components/PortfolioSection"
-import { PricingSection } from "@/components/PricingSection"
-import { AutomationPlans } from "@/components/AutomationPlans"
-import { ContentPlans } from "@/components/ContentPlans"
 import { FaqSection } from "@/components/FaqSection"
 import { ContactSection } from "@/components/ContactSection"
 import { Footer } from "@/components/Footer"
@@ -18,9 +15,6 @@ export default function Index() {
       <ServicesSection />
       <AboutSection />
       <PortfolioSection />
-      <PricingSection />
-      <AutomationPlans />
-      <ContentPlans />
       <FaqSection />
       <ContactSection />
       <Footer />
