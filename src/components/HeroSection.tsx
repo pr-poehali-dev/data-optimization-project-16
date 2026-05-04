@@ -147,7 +147,7 @@ export function HeroSection() {
           className="text-lg md:text-xl max-w-2xl mx-auto mb-10 animate-fade-in-up delay-200 leading-relaxed"
           style={{ color: "var(--nf-muted)" }}
         >
-          Запускаем цифровые решения за 7 дней. Без штата программистов.{" "}
+          Запускаем цифровые решения за 7 дней.{" "}
           <span style={{ color: "var(--nf-text)" }}></span>
         </p>
 
