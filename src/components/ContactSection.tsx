@@ -48,6 +48,23 @@ export function ContactSection() {
       style={{ background: "var(--nf-bg)" }}
     >
       <div className="max-w-7xl mx-auto px-6">
+        {/* Header */}
+        <div className="mb-10">
+          <div
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4 mono text-xs"
+            style={{ background: "rgba(16,185,129,0.1)", border: "1px solid rgba(16,185,129,0.2)", color: "var(--nf-green)" }}
+          >
+            связаться
+          </div>
+          <h2
+            className="text-3xl md:text-4xl font-bold"
+            style={{ color: "var(--nf-text)", lineHeight: 1.15 }}
+          >
+            Напишите нам —{" "}
+            <span className="gradient-text">ответим за 2 часа</span>
+          </h2>
+        </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
 
           {/* Left: форма */}
@@ -142,21 +159,6 @@ export function ContactSection() {
 
           {/* Right: контакты */}
           <div>
-            <div
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 mono text-xs"
-              style={{ background: "rgba(16,185,129,0.1)", border: "1px solid rgba(16,185,129,0.2)", color: "var(--nf-green)" }}
-            >
-              связаться
-            </div>
-            <h2
-              className="text-3xl md:text-4xl font-bold mb-4"
-              style={{ color: "var(--nf-text)", lineHeight: 1.15 }}
-            >
-              Напишите нам —{" "}
-              <span className="gradient-text">ответим за 2 часа</span>
-            </h2>
-
-
             <div className="space-y-4">
               {contactInfo.map((item) => (
                 <a
