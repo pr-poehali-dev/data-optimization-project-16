@@ -6,11 +6,6 @@ const contacts = [
   { icon: "Send", label: "@Neyrovid", href: "https://t.me/Neyrovid", color: "var(--nf-green)" },
 ];
 
-const pricing = [
-  { label: "Старт", price: "от 25 000 ₽", color: "var(--nf-indigo)" },
-  { label: "Бизнес", price: "от 75 000 ₽", color: "var(--nf-cyan)" },
-  { label: "Премиум", price: "По запросу", color: "var(--nf-green)" },
-];
 
 export function Footer() {
   const scrollTo = (href: string, e: React.MouseEvent) => {
@@ -31,7 +26,7 @@ export function Footer() {
       }}
     >
       <div className="max-w-7xl mx-auto px-6 py-14">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-10">
 
           {/* Brand */}
           <div>
@@ -83,30 +78,7 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Pricing */}
-          <div>
-            <h4 className="text-sm font-semibold mb-4 mono" style={{ color: "var(--nf-text)" }}>
-              Тарифы
-            </h4>
-            <ul className="space-y-2.5">
-              {pricing.map((p) => (
-                <li key={p.label}>
-                  <a
-                    href="#services"
-                    onClick={(e) => scrollTo("#services", e)}
-                    className="flex items-center gap-1 text-sm transition-colors duration-200 group"
-                    style={{ color: "var(--nf-muted)" }}
-                    onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = p.color; }}
-                    onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--nf-muted)"; }}
-                  >
-                    <span className="shrink-0">{p.label}</span>
-                    <span className="flex-1 border-b border-dashed mx-2" style={{ borderColor: "var(--nf-border)" }} />
-                    <span className="whitespace-nowrap font-medium shrink-0" style={{ color: p.color }}>{p.price}</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+
 
         </div>
 
