@@ -79,8 +79,8 @@ export function ContactSection() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium mb-2" style={{ color: "var(--nf-text)" }}>Telegram или телефон *</label>
-                  <input className="nf-input" placeholder="@username или +7 978 686-11-68" required value={form.contact} onChange={set("contact")} />
+                  <label className="block text-sm font-medium mb-2" style={{ color: "var(--nf-text)" }}>Телефон *</label>
+                  <input className="nf-input" placeholder="+7 978 686-11-68" required value={form.contact} onChange={set("contact")} />
                 </div>
 
                 <div>
