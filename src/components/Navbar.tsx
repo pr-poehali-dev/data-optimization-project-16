@@ -97,7 +97,7 @@ export function Navbar() {
             { label: "Главная", icon: "Home", href: "#" },
             { label: "Услуги", icon: "Layers", href: "#services" },
             { label: "Тарифы", icon: "CreditCard", href: "#services" },
-            { label: "Связаться", icon: "MessageCircle", href: "#contact" },
+            { label: "Кейсы", icon: "Briefcase", href: "#portfolio" },
           ].map((item) => (
             <a
               key={item.href}
