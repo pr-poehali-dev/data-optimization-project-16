@@ -70,7 +70,7 @@ export function ContactSection() {
               <form onSubmit={handleSubmit} className="space-y-5" noValidate>
                 <div>
                   <h3 className="text-xl font-bold mb-1" style={{ color: "var(--nf-text)" }}>Получить смету</h3>
-                  <p className="text-sm" style={{ color: "var(--nf-muted)" }}>Заполните за 2 минуты — ответим лично</p>
+                  <p className="text-sm" style={{ color: "var(--nf-muted)" }}>Заполните за 2 минуты — ответим быстро</p>
                 </div>
 
                 <div>
@@ -155,9 +155,7 @@ export function ContactSection() {
               Напишите нам —{" "}
               <span className="gradient-text">ответим за 2 часа</span>
             </h2>
-            <p className="text-base mb-8 leading-relaxed" style={{ color: "var(--nf-muted)" }}>
-              Отвечаем лично. Без шаблонных ответов и спама.
-            </p>
+
 
             <div className="space-y-4">
               {contactInfo.map((item) => (
