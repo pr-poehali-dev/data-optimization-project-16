@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Icon from "@/components/ui/icon";
 
 const tiers = [
@@ -58,11 +59,15 @@ const tiers = [
 ];
 
 export function PricingSection() {
+  const [active, setActive] = useState(0);
+
   const scrollTo = (href: string, e: React.MouseEvent) => {
     e.preventDefault();
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
+
+  const t = tiers[active];
 
   return (
     <section
@@ -100,118 +105,114 @@ export function PricingSection() {
           </p>
         </div>
 
-        {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
-          {tiers.map((t, i) => (
+        {/* Desktop: 3 columns */}
+        <div className="hidden md:grid grid-cols-3 gap-6 items-start">
+          {tiers.map((tier, i) => (
             <div
               key={i}
-              className={`glass-card p-8 flex flex-col relative ${t.popular ? "pricing-popular" : ""}`}
-              style={t.popular ? { transform: "scale(1.03)", transformOrigin: "center" } : {}}
+              className={`glass-card p-8 flex flex-col relative ${tier.popular ? "pricing-popular" : ""}`}
+              style={tier.popular ? { transform: "scale(1.03)", transformOrigin: "center" } : {}}
             >
-              {/* Popular badge */}
-              {t.popular && (
-                <div
-                  className="badge-popular absolute -top-4 left-1/2 -translate-x-1/2 whitespace-nowrap"
-                >
+              {tier.popular && (
+                <div className="badge-popular absolute -top-4 left-1/2 -translate-x-1/2 whitespace-nowrap">
                   Популярный выбор
                 </div>
               )}
-
-              {/* Duration */}
               <div
                 className="inline-flex items-center gap-1.5 mb-4 px-3 py-1 rounded-full w-fit mono text-xs"
-                style={{
-                  background: `${t.accentColor}15`,
-                  color: t.accentColor,
-                  border: `1px solid ${t.accentColor}25`,
-                }}
+                style={{ background: `${tier.accentColor}15`, color: tier.accentColor, border: `1px solid ${tier.accentColor}25` }}
               >
                 <Icon name="Clock" size={11} />
-                {t.duration}
+                {tier.duration}
               </div>
-
-              {/* Tier name */}
-              <h3
-                className="text-xl font-bold mb-1"
-                style={{ color: "var(--nf-text)" }}
-              >
-                {t.name}
-              </h3>
-              <p className="text-sm mb-5" style={{ color: "var(--nf-muted)" }}>
-                {t.desc}
-              </p>
-
-              {/* Price */}
+              <h3 className="text-xl font-bold mb-1" style={{ color: "var(--nf-text)" }}>{tier.name}</h3>
+              <p className="text-sm mb-5" style={{ color: "var(--nf-muted)" }}>{tier.desc}</p>
               <div className="mb-6">
-                <span
-                  className="text-3xl font-bold"
-                  style={{ color: "var(--nf-text)" }}
-                >
-                  {t.price}
-                </span>
-                <span
-                  className="text-sm ml-2"
-                  style={{ color: "var(--nf-muted)" }}
-                >
-                  {t.period}
-                </span>
+                <span className="text-3xl font-bold" style={{ color: "var(--nf-text)" }}>{tier.price}</span>
+                <span className="text-sm ml-2" style={{ color: "var(--nf-muted)" }}>{tier.period}</span>
               </div>
-
-              {/* Divider */}
-              <div
-                className="h-px mb-6"
-                style={{ background: "var(--nf-border)" }}
-              />
-
-              {/* Features */}
+              <div className="h-px mb-6" style={{ background: "var(--nf-border)" }} />
               <ul className="space-y-3 flex-1 mb-8">
-                {t.features.map((f, j) => (
+                {tier.features.map((f, j) => (
                   <li key={j} className="flex items-start gap-3">
-                    <div
-                      className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
-                      style={{ background: `${t.accentColor}18` }}
-                    >
-                      <Icon name="Check" size={11} style={{ color: t.accentColor }} />
+                    <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style={{ background: `${tier.accentColor}18` }}>
+                      <Icon name="Check" size={11} style={{ color: tier.accentColor }} />
                     </div>
-                    <span className="text-sm leading-relaxed" style={{ color: "var(--nf-text)" }}>
-                      {f}
-                    </span>
+                    <span className="text-sm leading-relaxed" style={{ color: "var(--nf-text)" }}>{f}</span>
                   </li>
                 ))}
               </ul>
-
-              {/* CTA */}
               <a
                 href="#contact"
                 onClick={(e) => scrollTo("#contact", e)}
                 className="block text-center font-semibold py-3.5 px-6 rounded-xl transition-all duration-200"
-                style={
-                  t.popular
-                    ? {
-                        background: "var(--nf-gradient)",
-                        color: "white",
-                      }
-                    : {
-                        background: "transparent",
-                        color: t.accentColor,
-                        border: `1px solid ${t.accentColor}40`,
-                      }
-                }
-                onMouseEnter={(e) => {
-                  if (!t.popular) {
-                    (e.currentTarget as HTMLElement).style.background = `${t.accentColor}12`;
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  if (!t.popular) {
-                    (e.currentTarget as HTMLElement).style.background = "transparent";
-                  }
-                }}
+                style={tier.popular ? { background: "var(--nf-gradient)", color: "white" } : { background: "transparent", color: tier.accentColor, border: `1px solid ${tier.accentColor}40` }}
+                onMouseEnter={(e) => { if (!tier.popular) (e.currentTarget as HTMLElement).style.background = `${tier.accentColor}12`; }}
+                onMouseLeave={(e) => { if (!tier.popular) (e.currentTarget as HTMLElement).style.background = "transparent"; }}
               >
-                {t.cta}
+                {tier.cta}
               </a>
             </div>
           ))}
+        </div>
+
+        {/* Mobile: slider */}
+        <div className="md:hidden">
+          <div className={`glass-card p-7 flex flex-col relative ${t.popular ? "pricing-popular" : ""}`}>
+            {t.popular && (
+              <div className="badge-popular absolute -top-4 left-1/2 -translate-x-1/2 whitespace-nowrap">
+                Популярный выбор
+              </div>
+            )}
+            <div
+              className="inline-flex items-center gap-1.5 mb-4 px-3 py-1 rounded-full w-fit mono text-xs"
+              style={{ background: `${t.accentColor}15`, color: t.accentColor, border: `1px solid ${t.accentColor}25` }}
+            >
+              <Icon name="Clock" size={11} />
+              {t.duration}
+            </div>
+            <h3 className="text-xl font-bold mb-1" style={{ color: "var(--nf-text)" }}>{t.name}</h3>
+            <p className="text-sm mb-4" style={{ color: "var(--nf-muted)" }}>{t.desc}</p>
+            <div className="mb-5">
+              <span className="text-3xl font-bold" style={{ color: "var(--nf-text)" }}>{t.price}</span>
+              <span className="text-sm ml-2" style={{ color: "var(--nf-muted)" }}>{t.period}</span>
+            </div>
+            <div className="h-px mb-5" style={{ background: "var(--nf-border)" }} />
+            <ul className="space-y-3 mb-7">
+              {t.features.map((f, j) => (
+                <li key={j} className="flex items-start gap-3">
+                  <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style={{ background: `${t.accentColor}18` }}>
+                    <Icon name="Check" size={11} style={{ color: t.accentColor }} />
+                  </div>
+                  <span className="text-sm leading-relaxed" style={{ color: "var(--nf-text)" }}>{f}</span>
+                </li>
+              ))}
+            </ul>
+            <a
+              href="#contact"
+              onClick={(e) => scrollTo("#contact", e)}
+              className="block text-center font-semibold py-4 px-6 rounded-xl"
+              style={t.popular ? { background: "var(--nf-gradient)", color: "white" } : { color: t.accentColor, border: `1px solid ${t.accentColor}40` }}
+            >
+              {t.cta}
+            </a>
+          </div>
+
+          {/* Dots */}
+          <div className="flex justify-center gap-2 mt-5">
+            {tiers.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setActive(i)}
+                className="rounded-full transition-all duration-200"
+                style={{
+                  width: i === active ? 24 : 8,
+                  height: 8,
+                  background: i === active ? "var(--nf-indigo)" : "var(--nf-border)",
+                }}
+              />
+            ))}
+          </div>
         </div>
 
         <p
