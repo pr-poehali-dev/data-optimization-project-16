@@ -111,6 +111,16 @@ export function HeroSection() {
       />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 pt-24 pb-20 md:pt-32 text-center">
+
+        {/* Mobile logo */}
+        <div className="flex justify-center mb-6 md:hidden">
+          <img
+            src="https://cdn.poehali.dev/projects/3ac90158-e371-49c9-8dba-507fa6fdb827/bucket/23ce61da-0272-4004-82f6-d909a64ed510.png"
+            alt="NEUROFLOW"
+            className="h-12 w-auto"
+          />
+        </div>
+
         {/* Badge */}
         <div
           className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8 animate-fade-in-up"
@@ -189,14 +199,7 @@ export function HeroSection() {
           ))}
         </div>
 
-        {/* Scroll hint */}
-        <div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-float"
-          style={{ color: "var(--nf-muted)" }}
-        >
-          <span className="text-xs font-medium mono">scroll</span>
-          <Icon name="ChevronDown" size={16} />
-        </div>
+
       </div>
     </section>
   );
