@@ -144,7 +144,7 @@ export function HeroSection() {
           style={{ color: "var(--nf-muted)" }}
         >
           Запускаем цифровые решения за 7 дней. Без штата программистов.{" "}
-          <span style={{ color: "var(--nf-text)" }}>С измеримым ROI.</span>
+          <span style={{ color: "var(--nf-text)" }}></span>
         </p>
 
         {/* CTAs */}
