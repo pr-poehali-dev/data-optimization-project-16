@@ -96,7 +96,7 @@ export function Navbar() {
           {[
             { label: "Главная", icon: "Home", href: "#" },
             { label: "Услуги", icon: "Layers", href: "#services" },
-            { label: "Кейсы", icon: "Briefcase", href: "#portfolio" },
+            { label: "Тарифы", icon: "CreditCard", href: "#services" },
             { label: "Связаться", icon: "MessageCircle", href: "#contact" },
           ].map((item) => (
             <a

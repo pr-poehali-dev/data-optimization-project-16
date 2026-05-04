@@ -1,12 +1,6 @@
 import { useEffect, useRef } from "react";
 import Icon from "@/components/ui/icon";
 
-const STATS = [
-  { value: "50+", label: "проектов запущено" },
-  { value: "7", label: "дней до запуска" },
-  { value: "3x", label: "рост конверсии в среднем" },
-];
-
 export function HeroSection() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -110,7 +104,7 @@ export function HeroSection() {
         style={{ width: 400, height: 400, bottom: "-5%", right: "-5%", opacity: 0.2 }}
       />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-24 pb-20 md:pt-32 text-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-10 pb-16 md:pt-32 md:pb-20 text-center">
 
         {/* Mobile logo */}
         <div className="flex justify-center mb-6 md:hidden">
@@ -158,7 +152,7 @@ export function HeroSection() {
         </p>
 
         {/* CTAs */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 animate-fade-in-up delay-300">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up delay-300">
           <a
             href="#contact"
             onClick={(e) => scrollTo("#contact", e)}
@@ -175,28 +169,6 @@ export function HeroSection() {
             <Icon name="Play" size={16} />
             Смотреть кейсы
           </a>
-        </div>
-
-        {/* Stats */}
-        <div
-          className="inline-flex flex-col sm:flex-row items-center gap-6 sm:gap-12 px-8 py-5 rounded-2xl animate-fade-in-up delay-400"
-          style={{
-            background: "rgba(255,255,255,0.03)",
-            border: "1px solid var(--nf-border)",
-          }}
-        >
-          {STATS.map((s, i) => (
-            <div key={i} className="text-center">
-              <div
-                className="text-3xl font-bold mb-1 gradient-text"
-              >
-                {s.value}
-              </div>
-              <div className="text-sm" style={{ color: "var(--nf-muted)" }}>
-                {s.label}
-              </div>
-            </div>
-          ))}
         </div>
 
 

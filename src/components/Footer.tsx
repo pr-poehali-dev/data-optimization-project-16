@@ -1,23 +1,15 @@
 import Icon from "@/components/ui/icon";
 
-const navLinks = [
-  { label: "Услуги", href: "#services" },
-  { label: "Кейсы", href: "#portfolio" },
-  { label: "Тарифы", href: "#pricing" },
-  { label: "FAQ", href: "#faq" },
-  { label: "Контакт", href: "#contact" },
-];
-
-const socials = [
-  { icon: "Send", label: "Telegram", href: "https://t.me/Neyrovid" },
-  { icon: "Instagram", label: "Instagram", href: "#" },
-  { icon: "Linkedin", label: "LinkedIn", href: "#" },
-];
-
 const contacts = [
   { icon: "Mail", label: "neuroflow9@gmail.com", href: "mailto:neuroflow9@gmail.com", color: "var(--nf-indigo)" },
   { icon: "Phone", label: "+7 978 686-11-68", href: "tel:+79786861168", color: "var(--nf-cyan)" },
   { icon: "Send", label: "@Neyrovid", href: "https://t.me/Neyrovid", color: "var(--nf-green)" },
+];
+
+const pricing = [
+  { label: "Старт", price: "от 25 000 ₽", color: "var(--nf-indigo)" },
+  { label: "Бизнес", price: "от 75 000 ₽", color: "var(--nf-cyan)" },
+  { label: "Премиум", price: "По запросу", color: "var(--nf-green)" },
 ];
 
 export function Footer() {
@@ -38,10 +30,11 @@ export function Footer() {
         borderTop: "1px solid var(--nf-border)",
       }}
     >
-      <div className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-10 mb-12">
+      <div className="max-w-7xl mx-auto px-6 py-14">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
+
           {/* Brand */}
-          <div className="md:col-span-2">
+          <div>
             <a
               href="#"
               onClick={(e) => scrollTo("#", e)}
@@ -57,79 +50,17 @@ export function Footer() {
               </span>
             </a>
             <p
-              className="text-sm leading-relaxed max-w-xs mb-6"
+              className="text-sm leading-relaxed max-w-xs"
               style={{ color: "var(--nf-muted)" }}
             >
               ИИ-агентство полного цикла: контент, автоматизация, веб-разработка.
               Запускаем цифровые решения с измеримым ROI.
             </p>
-
-            {/* Socials */}
-            <div className="flex gap-3">
-              {socials.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={s.label}
-                  className="w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-200"
-                  style={{
-                    background: "rgba(255,255,255,0.05)",
-                    border: "1px solid var(--nf-border)",
-                    color: "var(--nf-muted)",
-                  }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLElement).style.color = "var(--nf-indigo)";
-                    (e.currentTarget as HTMLElement).style.borderColor = "rgba(99,102,241,0.4)";
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLElement).style.color = "var(--nf-muted)";
-                    (e.currentTarget as HTMLElement).style.borderColor = "var(--nf-border)";
-                  }}
-                >
-                  <Icon name={s.icon as any} size={15} />
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* Nav */}
-          <div>
-            <h4
-              className="text-sm font-semibold mb-4 mono"
-              style={{ color: "var(--nf-text)" }}
-            >
-              Навигация
-            </h4>
-            <ul className="space-y-2.5">
-              {navLinks.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    onClick={(e) => scrollTo(link.href, e)}
-                    className="text-sm transition-colors duration-200"
-                    style={{ color: "var(--nf-muted)" }}
-                    onMouseEnter={(e) => {
-                      (e.currentTarget as HTMLElement).style.color = "var(--nf-text)";
-                    }}
-                    onMouseLeave={(e) => {
-                      (e.currentTarget as HTMLElement).style.color = "var(--nf-muted)";
-                    }}
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
           </div>
 
           {/* Contacts */}
           <div>
-            <h4
-              className="text-sm font-semibold mb-4 mono"
-              style={{ color: "var(--nf-text)" }}
-            >
+            <h4 className="text-sm font-semibold mb-4 mono" style={{ color: "var(--nf-text)" }}>
               Контакты
             </h4>
             <ul className="space-y-3">
@@ -139,14 +70,10 @@ export function Footer() {
                     href={c.href}
                     target={c.href.startsWith("http") ? "_blank" : undefined}
                     rel={c.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                    className="flex items-center gap-2.5 text-sm transition-colors duration-200 group"
+                    className="flex items-center gap-2.5 text-sm transition-colors duration-200"
                     style={{ color: "var(--nf-muted)" }}
-                    onMouseEnter={(e) => {
-                      (e.currentTarget as HTMLElement).style.color = c.color;
-                    }}
-                    onMouseLeave={(e) => {
-                      (e.currentTarget as HTMLElement).style.color = "var(--nf-muted)";
-                    }}
+                    onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = c.color; }}
+                    onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--nf-muted)"; }}
                   >
                     <Icon name={c.icon as any} size={14} style={{ color: c.color, flexShrink: 0 }} />
                     {c.label}
@@ -156,35 +83,30 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Stats */}
+          {/* Pricing */}
           <div>
-            <h4
-              className="text-sm font-semibold mb-4 mono"
-              style={{ color: "var(--nf-text)" }}
-            >
-              В цифрах
+            <h4 className="text-sm font-semibold mb-4 mono" style={{ color: "var(--nf-text)" }}>
+              Тарифы
             </h4>
-            <div className="space-y-4">
-              <div
-                className="p-4 rounded-xl"
-                style={{ background: "rgba(99,102,241,0.07)", border: "1px solid rgba(99,102,241,0.15)" }}
-              >
-                <div className="text-2xl font-bold gradient-text mb-0.5">52</div>
-                <div className="text-xs" style={{ color: "var(--nf-muted)" }}>
-                  запущено проектов
-                </div>
-              </div>
-              <div
-                className="p-4 rounded-xl"
-                style={{ background: "rgba(16,185,129,0.07)", border: "1px solid rgba(16,185,129,0.15)" }}
-              >
-                <div className="text-2xl font-bold gradient-text-green mb-0.5">1 240ч</div>
-                <div className="text-xs" style={{ color: "var(--nf-muted)" }}>
-                  сэкономлено клиентам
-                </div>
-              </div>
-            </div>
+            <ul className="space-y-2.5">
+              {pricing.map((p) => (
+                <li key={p.label}>
+                  <a
+                    href="#services"
+                    onClick={(e) => scrollTo("#services", e)}
+                    className="flex items-center justify-between text-sm transition-colors duration-200 group"
+                    style={{ color: "var(--nf-muted)" }}
+                    onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = p.color; }}
+                    onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--nf-muted)"; }}
+                  >
+                    <span>{p.label}</span>
+                    <span className="whitespace-nowrap font-medium" style={{ color: p.color }}>{p.price}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
+
         </div>
 
         {/* Bottom bar */}
