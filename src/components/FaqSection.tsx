@@ -57,9 +57,7 @@ export function FaqSection() {
             Вопросы и{" "}
             <span className="gradient-text">ответы</span>
           </h2>
-          <p className="text-lg" style={{ color: "var(--nf-muted)" }}>
-            Отвечаем честно — без маркетингового воды.
-          </p>
+
         </div>
 
         {/* Accordion */}

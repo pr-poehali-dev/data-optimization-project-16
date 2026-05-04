@@ -70,8 +70,8 @@ export function ContactSection() {
               className="text-3xl md:text-5xl font-bold mb-5"
               style={{ color: "var(--nf-text)", lineHeight: 1.15 }}
             >
-              Готовы обсудить{" "}
-              <span className="gradient-text">ваш проект?</span>
+              Напишите нам —{" "}
+              <span className="gradient-text">ответим за 2 часа</span>
             </h2>
             <p className="text-lg mb-10 leading-relaxed" style={{ color: "var(--nf-muted)" }}>
               Заполните форму — пришлём смету в течение 2 часов.
