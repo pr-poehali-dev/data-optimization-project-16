@@ -1,81 +1,174 @@
-import { Github, Linkedin, Twitter } from "lucide-react"
+import Icon from "@/components/ui/icon";
+
+const navLinks = [
+  { label: "Услуги", href: "#services" },
+  { label: "Кейсы", href: "#portfolio" },
+  { label: "Тарифы", href: "#pricing" },
+  { label: "FAQ", href: "#faq" },
+  { label: "Контакт", href: "#contact" },
+];
+
+const socials = [
+  { icon: "Send", label: "Telegram", href: "https://t.me/neuroflow_ai" },
+  { icon: "Instagram", label: "Instagram", href: "#" },
+  { icon: "Linkedin", label: "LinkedIn", href: "#" },
+];
 
 export function Footer() {
+  const scrollTo = (href: string, e: React.MouseEvent) => {
+    e.preventDefault();
+    if (href === "#") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      const el = document.querySelector(href);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
-    <footer className="border-t border-border bg-muted/30 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="container mx-auto max-w-6xl">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div>
-            <h3 className="text-xl font-bold mb-4">
-              <span className="text-primary font-black">✦</span>
-              {" "}Нейро<span className="text-primary">Вид</span>
-            </h3>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              Создаём сайты, которые работают на ваш бизнес.<br />
-              © 2025 НейроВид. Все права защищены.
+    <footer
+      style={{
+        background: "rgba(255,255,255,0.015)",
+        borderTop: "1px solid var(--nf-border)",
+      }}
+    >
+      <div className="max-w-7xl mx-auto px-6 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+          {/* Brand */}
+          <div className="md:col-span-2">
+            <a
+              href="#"
+              onClick={(e) => scrollTo("#", e)}
+              className="flex items-center gap-3 mb-4 hover:opacity-90 transition-opacity"
+            >
+              <img
+                src="https://cdn.poehali.dev/projects/3ac90158-e371-49c9-8dba-507fa6fdb827/bucket/23ce61da-0272-4004-82f6-d909a64ed510.png"
+                alt="NEUROFLOW"
+                className="h-9 w-auto"
+              />
+              <span className="font-bold text-xl" style={{ color: "var(--nf-text)" }}>
+                NEURO<span className="gradient-text">FLOW</span>
+              </span>
+            </a>
+            <p
+              className="text-sm leading-relaxed max-w-xs mb-6"
+              style={{ color: "var(--nf-muted)" }}
+            >
+              ИИ-агентство полного цикла: контент, автоматизация, веб-разработка.
+              Запускаем цифровые решения с измеримым ROI.
             </p>
+
+            {/* Socials */}
+            <div className="flex gap-3">
+              {socials.map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={s.label}
+                  className="w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-200"
+                  style={{
+                    background: "rgba(255,255,255,0.05)",
+                    border: "1px solid var(--nf-border)",
+                    color: "var(--nf-muted)",
+                  }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLElement).style.color = "var(--nf-indigo)";
+                    (e.currentTarget as HTMLElement).style.borderColor = "rgba(99,102,241,0.4)";
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLElement).style.color = "var(--nf-muted)";
+                    (e.currentTarget as HTMLElement).style.borderColor = "var(--nf-border)";
+                  }}
+                >
+                  <Icon name={s.icon as any} size={15} />
+                </a>
+              ))}
+            </div>
           </div>
 
+          {/* Nav */}
           <div>
-            <h4 className="font-semibold mb-4">Навигация</h4>
-            <ul className="space-y-2">
-              <li>
-                <a href="#about" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                  О нас
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                  Услуги
-                </a>
-              </li>
-              <li>
-                <a href="#portfolio" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                  Портфолио
-                </a>
-              </li>
-              <li>
-                <a href="#contact" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                  Контакты
-                </a>
-              </li>
+            <h4
+              className="text-sm font-semibold mb-4 mono"
+              style={{ color: "var(--nf-text)" }}
+            >
+              Навигация
+            </h4>
+            <ul className="space-y-2.5">
+              {navLinks.map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    onClick={(e) => scrollTo(link.href, e)}
+                    className="text-sm transition-colors duration-200"
+                    style={{ color: "var(--nf-muted)" }}
+                    onMouseEnter={(e) => {
+                      (e.currentTarget as HTMLElement).style.color = "var(--nf-text)";
+                    }}
+                    onMouseLeave={(e) => {
+                      (e.currentTarget as HTMLElement).style.color = "var(--nf-muted)";
+                    }}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
+          {/* Stats */}
           <div>
-            <h4 className="font-semibold mb-4">Мы в соцсетях</h4>
-            <div className="flex gap-4">
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors"
+            <h4
+              className="text-sm font-semibold mb-4 mono"
+              style={{ color: "var(--nf-text)" }}
+            >
+              В цифрах
+            </h4>
+            <div className="space-y-4">
+              <div
+                className="p-4 rounded-xl"
+                style={{ background: "rgba(99,102,241,0.07)", border: "1px solid rgba(99,102,241,0.15)" }}
               >
-                <Linkedin className="h-5 w-5" />
-                <span className="sr-only">LinkedIn</span>
-              </a>
-              <a
-                href="https://github.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors"
+                <div className="text-2xl font-bold gradient-text mb-0.5">52</div>
+                <div className="text-xs" style={{ color: "var(--nf-muted)" }}>
+                  запущено проектов
+                </div>
+              </div>
+              <div
+                className="p-4 rounded-xl"
+                style={{ background: "rgba(16,185,129,0.07)", border: "1px solid rgba(16,185,129,0.15)" }}
               >
-                <Github className="h-5 w-5" />
-                <span className="sr-only">GitHub</span>
-              </a>
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors"
-              >
-                <Twitter className="h-5 w-5" />
-                <span className="sr-only">Twitter</span>
-              </a>
+                <div className="text-2xl font-bold gradient-text-green mb-0.5">1 240ч</div>
+                <div className="text-xs" style={{ color: "var(--nf-muted)" }}>
+                  сэкономлено клиентам
+                </div>
+              </div>
             </div>
           </div>
         </div>
+
+        {/* Bottom bar */}
+        <div
+          className="pt-8 flex flex-col md:flex-row justify-between items-center gap-4"
+          style={{ borderTop: "1px solid var(--nf-border)" }}
+        >
+          <p className="text-xs" style={{ color: "var(--nf-muted)" }}>
+            © 2025 NEUROFLOW. Все права защищены.
+          </p>
+          <a
+            href="#privacy"
+            className="text-xs hover:underline transition-all"
+            style={{ color: "var(--nf-muted)" }}
+          >
+            Политика конфиденциальности
+          </a>
+        </div>
       </div>
+
+      {/* Mobile bottom bar spacer */}
+      <div className="h-16 md:hidden" />
     </footer>
-  )
+  );
 }

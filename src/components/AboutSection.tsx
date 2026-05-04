@@ -1,58 +1,173 @@
-import { Card, CardContent } from "@/components/ui/card"
-import { CheckCircle2, Sparkles } from "lucide-react"
+import Icon from "@/components/ui/icon";
 
-const values = [
-  { title: "Качество", description: "Высококлассные решения, соответствующие самым высоким стандартам" },
-  { title: "Доступность", description: "Профессиональные сайты по честным и прозрачным ценам" },
-]
+const steps = [
+  {
+    num: "01",
+    icon: "Search",
+    title: "Диагностика",
+    desc: "Разбираем задачу, определяем цели и метрики успеха. Созвон 30 минут — и понятный план на руках.",
+    duration: "1 день",
+  },
+  {
+    num: "02",
+    icon: "PenTool",
+    title: "Прототип",
+    desc: "Собираем MVP-прототип или дизайн-макет. Вы видите результат до оплаты финального этапа.",
+    duration: "2–3 дня",
+  },
+  {
+    num: "03",
+    icon: "Rocket",
+    title: "Запуск",
+    desc: "Разрабатываем, тестируем и запускаем. Без задержек, без «ещё немного подождите».",
+    duration: "3–5 дней",
+  },
+  {
+    num: "04",
+    icon: "HeartHandshake",
+    title: "Поддержка",
+    desc: "После запуска остаёмся на связи. Правки, обновления, новые задачи — всё в рамках договора.",
+    duration: "Ongoing",
+  },
+];
 
 export function AboutSection() {
   return (
-    <section id="about" className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 relative">
-      <div className="absolute top-20 left-10 w-60 h-60 bg-primary/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-10 right-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
-
-      <div className="container mx-auto max-w-3xl relative z-10">
-        <div className="text-center mb-8 sm:mb-10">
-          <div className="inline-flex items-center gap-2 mb-3 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-semibold">
-            <Sparkles className="h-3.5 w-3.5" />
-            О нас
+    <section
+      id="how-we-work"
+      className="section-padding"
+      style={{ background: "rgba(255,255,255,0.015)" }}
+    >
+      <div className="max-w-7xl mx-auto px-6">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <div
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4 mono text-xs"
+            style={{
+              background: "rgba(6,182,212,0.1)",
+              border: "1px solid rgba(6,182,212,0.2)",
+              color: "var(--nf-cyan)",
+            }}
+          >
+            как мы работаем
           </div>
-          <h2 className="text-2xl sm:text-4xl font-bold mb-3 text-balance">
-            Команда, которой{" "}
-            <span className="text-primary relative">
-              доверяют
-              <svg className="absolute -bottom-1.5 left-0 w-full" height="6" viewBox="0 0 200 6" fill="none">
-                <path d="M0 3C50 1 150 5 200 3" stroke="currentColor" strokeWidth="2" className="text-primary" />
-              </svg>
-            </span>
+          <h2
+            className="text-3xl md:text-5xl font-bold mb-4"
+            style={{ color: "var(--nf-text)" }}
+          >
+            От задачи до результата —
+            <br />
+            <span className="gradient-text">прозрачный процесс</span>
           </h2>
-          <p className="text-sm sm:text-base text-muted-foreground max-w-lg mx-auto leading-relaxed">
-            Небольшая команда разработчиков и дизайнеров. Без лишних процессов — напрямую к результату.
+          <p className="text-lg max-w-xl mx-auto" style={{ color: "var(--nf-muted)" }}>
+            Никаких чёрных ящиков. Вы знаете, что происходит на каждом шаге.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {values.map((value, index) => (
-            <Card
-              key={index}
-              className="border-none shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group"
-            >
-              <CardContent className="p-5">
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
-                  <div>
-                    <h3 className="font-semibold text-base mb-1 group-hover:text-primary transition-colors">
-                      {value.title}
-                    </h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed">{value.description}</p>
-                  </div>
+        {/* Desktop: horizontal timeline */}
+        <div className="hidden md:block">
+          {/* Connector line */}
+          <div className="relative flex items-start justify-between gap-4 mb-0">
+            <div
+              className="absolute top-7 left-[12.5%] right-[12.5%] h-px"
+              style={{ background: "linear-gradient(90deg, var(--nf-indigo), var(--nf-cyan))" }}
+            />
+            {steps.map((step, i) => (
+              <div key={i} className="flex-1 text-center relative">
+                {/* Circle */}
+                <div
+                  className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-5 relative z-10"
+                  style={{
+                    background: "var(--nf-bg)",
+                    border: "2px solid var(--nf-indigo)",
+                    boxShadow: "var(--nf-glow-indigo)",
+                  }}
+                >
+                  <Icon name={step.icon as any} size={22} style={{ color: "var(--nf-indigo)" }} />
                 </div>
-              </CardContent>
-            </Card>
+                <div
+                  className="mono text-xs mb-2"
+                  style={{ color: "var(--nf-muted)" }}
+                >
+                  {step.num}
+                </div>
+                <h3
+                  className="text-lg font-bold mb-2"
+                  style={{ color: "var(--nf-text)" }}
+                >
+                  {step.title}
+                </h3>
+                <p
+                  className="text-sm leading-relaxed mb-3 px-2"
+                  style={{ color: "var(--nf-muted)" }}
+                >
+                  {step.desc}
+                </p>
+                <span
+                  className="inline-block px-3 py-1 rounded-full text-xs font-semibold"
+                  style={{
+                    background: "rgba(16,185,129,0.1)",
+                    color: "var(--nf-green)",
+                    border: "1px solid rgba(16,185,129,0.2)",
+                  }}
+                >
+                  {step.duration}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Mobile: vertical accordion-style */}
+        <div className="md:hidden space-y-4">
+          {steps.map((step, i) => (
+            <div key={i} className="glass-card p-6 flex gap-5">
+              <div className="flex flex-col items-center">
+                <div
+                  className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0"
+                  style={{
+                    background: "rgba(99,102,241,0.12)",
+                    border: "1px solid rgba(99,102,241,0.3)",
+                  }}
+                >
+                  <Icon name={step.icon as any} size={20} style={{ color: "var(--nf-indigo)" }} />
+                </div>
+                {i < steps.length - 1 && (
+                  <div
+                    className="w-px flex-1 mt-3"
+                    style={{ background: "rgba(99,102,241,0.2)", minHeight: 24 }}
+                  />
+                )}
+              </div>
+              <div className="flex-1">
+                <div className="flex items-center justify-between mb-1">
+                  <span className="mono text-xs" style={{ color: "var(--nf-muted)" }}>
+                    {step.num}
+                  </span>
+                  <span
+                    className="text-xs px-2 py-0.5 rounded-full"
+                    style={{
+                      background: "rgba(16,185,129,0.1)",
+                      color: "var(--nf-green)",
+                    }}
+                  >
+                    {step.duration}
+                  </span>
+                </div>
+                <h3
+                  className="text-base font-bold mb-1"
+                  style={{ color: "var(--nf-text)" }}
+                >
+                  {step.title}
+                </h3>
+                <p className="text-sm leading-relaxed" style={{ color: "var(--nf-muted)" }}>
+                  {step.desc}
+                </p>
+              </div>
+            </div>
           ))}
         </div>
       </div>
     </section>
-  )
+  );
 }

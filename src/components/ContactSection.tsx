@@ -1,104 +1,236 @@
-import type React from "react"
-import { useState } from "react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Mail, Phone, MapPin, Send } from "lucide-react"
+import { useState } from "react";
+import Icon from "@/components/ui/icon";
+
+const taskTypes = [
+  "ИИ-контент (видео, аватары, музыка)",
+  "ИИ-автоматизация (боты, парсинг, отчёты)",
+  "Лендинг или корпоративный сайт",
+  "Мини-приложение / SaaS",
+  "Несколько направлений сразу",
+  "Не знаю — нужна консультация",
+];
+
+const budgetLabels = ["до 30k", "30–75k", "75–150k", "150k+"];
 
 export function ContactSection() {
-  const [formData, setFormData] = useState({
+  const [form, setForm] = useState({
     name: "",
-    email: "",
-    phone: "",
-    message: "",
-  })
+    contact: "",
+    task: "",
+    budget: 1,
+    sent: false,
+    sending: false,
+  });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log("[v0] Form submitted:", formData)
-  }
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }))
-  }
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setForm((f) => ({ ...f, sending: true }));
+    await new Promise((r) => setTimeout(r, 800));
+    setForm((f) => ({ ...f, sending: false, sent: true }));
+  };
 
   return (
-    <section id="contact" className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-muted/30 relative overflow-hidden">
-      <div className="absolute top-10 right-10 w-60 h-60 bg-primary/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-10 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
+    <section
+      id="contact"
+      className="section-padding"
+      style={{ background: "var(--nf-bg)" }}
+    >
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          {/* Left: text */}
+          <div>
+            <div
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 mono text-xs"
+              style={{
+                background: "rgba(16,185,129,0.1)",
+                border: "1px solid rgba(16,185,129,0.2)",
+                color: "var(--nf-green)",
+              }}
+            >
+              связаться
+            </div>
+            <h2
+              className="text-3xl md:text-5xl font-bold mb-5"
+              style={{ color: "var(--nf-text)", lineHeight: 1.15 }}
+            >
+              Готовы обсудить{" "}
+              <span className="gradient-text">ваш проект?</span>
+            </h2>
+            <p className="text-lg mb-8 leading-relaxed" style={{ color: "var(--nf-muted)" }}>
+              Заполните форму — пришлём смету в течение 24 часов.
+              Отвечаем лично. Без шаблонных ответов и спама.
+            </p>
 
-      <div className="container mx-auto max-w-5xl relative z-10">
-        <div className="text-center mb-8 sm:mb-10">
-          <div className="inline-block mb-3 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-semibold">
-            Контакты
+            <div className="space-y-5">
+              {[
+                { icon: "MessageSquare", title: "Telegram", val: "@neuroflow_ai", color: "var(--nf-cyan)" },
+                { icon: "Mail", title: "Email", val: "hello@neuroflow.ai", color: "var(--nf-indigo)" },
+                { icon: "Clock", title: "Ответ", val: "В течение 24 часов", color: "var(--nf-green)" },
+              ].map((item, i) => (
+                <div key={i} className="flex items-center gap-4">
+                  <div
+                    className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
+                    style={{ background: `${item.color}15`, border: `1px solid ${item.color}25` }}
+                  >
+                    <Icon name={item.icon as any} size={18} style={{ color: item.color }} />
+                  </div>
+                  <div>
+                    <p className="text-xs mono mb-0.5" style={{ color: "var(--nf-muted)" }}>
+                      {item.title}
+                    </p>
+                    <p className="text-sm font-medium" style={{ color: "var(--nf-text)" }}>
+                      {item.val}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
-          <h2 className="text-2xl sm:text-4xl font-bold mb-2 text-balance">
-            Готовы <span className="text-primary">стартовать?</span>
-          </h2>
-          <p className="text-sm sm:text-base text-muted-foreground max-w-md mx-auto">
-            Напишите нам — ответим в течение нескольких часов.
-          </p>
-        </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
-          <div className="lg:col-span-2">
-            <Card className="border-none shadow-xl bg-background">
-              <CardHeader className="pb-4">
-                <CardTitle className="text-xl">Напишите нам</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="space-y-1.5">
-                      <label htmlFor="name" className="text-sm font-medium">Имя *</label>
-                      <Input id="name" name="name" value={formData.name} onChange={handleChange} placeholder="Ваше имя" required />
-                    </div>
-                    <div className="space-y-1.5">
-                      <label htmlFor="email" className="text-sm font-medium">E-mail *</label>
-                      <Input id="email" name="email" type="email" value={formData.email} onChange={handleChange} placeholder="your@email.ru" required />
-                    </div>
-                  </div>
-                  <div className="space-y-1.5">
-                    <label htmlFor="phone" className="text-sm font-medium">Телефон</label>
-                    <Input id="phone" name="phone" type="tel" value={formData.phone} onChange={handleChange} placeholder="+7 900 123-45-67" />
-                  </div>
-                  <div className="space-y-1.5">
-                    <label htmlFor="message" className="text-sm font-medium">Сообщение *</label>
-                    <Textarea id="message" name="message" value={formData.message} onChange={handleChange} placeholder="Расскажите о вашем проекте..." rows={4} required />
-                  </div>
-                  <Button type="submit" className="w-full sm:w-auto group">
-                    <Send className="mr-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                    Отправить
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
-          </div>
+          {/* Right: form */}
+          <div className="glass-card p-8">
+            {form.sent ? (
+              <div className="text-center py-12">
+                <div
+                  className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-5"
+                  style={{ background: "rgba(16,185,129,0.15)", border: "1px solid rgba(16,185,129,0.3)" }}
+                >
+                  <Icon name="Check" size={32} style={{ color: "var(--nf-green)" }} />
+                </div>
+                <h3 className="text-xl font-bold mb-2" style={{ color: "var(--nf-text)" }}>
+                  Заявка отправлена!
+                </h3>
+                <p className="text-sm" style={{ color: "var(--nf-muted)" }}>
+                  Свяжемся с вами в течение 24 часов.
+                </p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <h3 className="text-xl font-bold mb-1" style={{ color: "var(--nf-text)" }}>
+                  Получить смету
+                </h3>
+                <p className="text-sm mb-5" style={{ color: "var(--nf-muted)" }}>
+                  Заполните за 2 минуты — ответим лично
+                </p>
 
-          <div className="space-y-3">
-            {[
-              { icon: Mail, label: "E-mail", value: "hello@codecraft.dev" },
-              { icon: Phone, label: "Телефон", value: "+7 900 123-45-67" },
-              { icon: MapPin, label: "Время работы", value: "Пн–Пт: 9:00–18:00" },
-            ].map(({ icon: Icon, label, value }) => (
-              <Card key={label} className="border-none shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 group">
-                <CardContent className="p-4">
-                  <div className="flex items-center gap-3">
-                    <div className="p-2.5 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 flex-shrink-0">
-                      <Icon className="h-4 w-4" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-sm">{label}</h3>
-                      <p className="text-xs text-muted-foreground">{value}</p>
-                    </div>
+                {/* Name */}
+                <div>
+                  <label className="block text-sm font-medium mb-2" style={{ color: "var(--nf-text)" }}>
+                    Имя *
+                  </label>
+                  <input
+                    className="nf-input"
+                    placeholder="Алексей"
+                    required
+                    autoFocus
+                    value={form.name}
+                    onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
+                  />
+                </div>
+
+                {/* Contact */}
+                <div>
+                  <label className="block text-sm font-medium mb-2" style={{ color: "var(--nf-text)" }}>
+                    Telegram или Email *
+                  </label>
+                  <input
+                    className="nf-input"
+                    placeholder="@username или email@mail.ru"
+                    required
+                    value={form.contact}
+                    onChange={(e) => setForm((f) => ({ ...f, contact: e.target.value }))}
+                  />
+                </div>
+
+                {/* Task type */}
+                <div>
+                  <label className="block text-sm font-medium mb-2" style={{ color: "var(--nf-text)" }}>
+                    Тип задачи *
+                  </label>
+                  <select
+                    className="nf-input"
+                    required
+                    value={form.task}
+                    onChange={(e) => setForm((f) => ({ ...f, task: e.target.value }))}
+                    style={{ appearance: "none", cursor: "pointer" }}
+                  >
+                    <option value="" disabled>Выберите направление...</option>
+                    {taskTypes.map((t) => (
+                      <option key={t} value={t} style={{ background: "#0B0F19" }}>
+                        {t}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Budget slider */}
+                <div>
+                  <div className="flex justify-between items-center mb-2">
+                    <label className="text-sm font-medium" style={{ color: "var(--nf-text)" }}>
+                      Бюджет
+                    </label>
+                    <span
+                      className="text-sm font-bold px-3 py-1 rounded-lg mono"
+                      style={{
+                        background: "rgba(99,102,241,0.12)",
+                        color: "var(--nf-indigo)",
+                      }}
+                    >
+                      {budgetLabels[form.budget]}
+                    </span>
                   </div>
-                </CardContent>
-              </Card>
-            ))}
+                  <input
+                    type="range"
+                    min={0}
+                    max={3}
+                    step={1}
+                    value={form.budget}
+                    onChange={(e) => setForm((f) => ({ ...f, budget: +e.target.value }))}
+                    className="w-full h-1.5 rounded-full appearance-none cursor-pointer"
+                    style={{
+                      background: `linear-gradient(to right, var(--nf-indigo) 0%, var(--nf-indigo) ${(form.budget / 3) * 100}%, rgba(255,255,255,0.1) ${(form.budget / 3) * 100}%, rgba(255,255,255,0.1) 100%)`,
+                      outline: "none",
+                    }}
+                  />
+                  <div className="flex justify-between mt-1">
+                    {budgetLabels.map((l) => (
+                      <span key={l} className="text-[10px]" style={{ color: "var(--nf-muted)" }}>
+                        {l}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Submit */}
+                <button
+                  type="submit"
+                  disabled={form.sending}
+                  className="btn-cta w-full flex items-center justify-center gap-2 mt-2"
+                  style={{ minHeight: 56 }}
+                >
+                  {form.sending ? (
+                    <>
+                      <span
+                        className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"
+                      />
+                      Отправляем...
+                    </>
+                  ) : (
+                    <>
+                      Получить смету за 24ч
+                      <Icon name="Send" size={16} />
+                    </>
+                  )}
+                </button>
+
+                <p className="text-xs text-center" style={{ color: "var(--nf-muted)" }}>
+                  Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности
+                </p>
+              </form>
+            )}
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }

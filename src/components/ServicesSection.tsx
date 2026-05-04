@@ -1,61 +1,133 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Layout, Share2, Search } from "lucide-react"
+import Icon from "@/components/ui/icon";
 
 const services = [
   {
-    icon: Layout,
-    title: "Лендинги и сайты",
-    description: "Продающие лендинги и корпоративные сайты с уникальным дизайном под ваш бизнес.",
+    icon: "Video",
+    color: "var(--nf-indigo)",
+    label: "ИИ-Контент",
+    desc: "Видео, музыка, аватары и креативы — создаём контент без студий и фотографов.",
+    bullets: ["Видео и анимации для соцсетей", "ИИ-аватары и дикторы", "Музыка и озвучка под задачу"],
+    id: "ai-content",
   },
   {
-    icon: Share2,
-    title: "Брендинг и соцсети",
-    description: "Фирменный стиль, логотипы и визуалы для соцсетей — профессионально на любой платформе.",
+    icon: "Zap",
+    color: "var(--nf-cyan)",
+    label: "ИИ-Автоматизация",
+    desc: "Боты, парсинг, отчёты и интеграции — автоматизируем рутину, экономя сотни часов.",
+    bullets: ["Telegram-боты и чат-помощники", "Парсинг и авто-отчёты", "Интеграции с CRM и ERP"],
+    id: "ai-automation",
   },
   {
-    icon: Search,
-    title: "SEO-оптимизация",
-    description: "Технический аудит и оптимизация контента — ваш сайт заметен в поиске с первых дней.",
+    icon: "Globe",
+    color: "var(--nf-green)",
+    label: "Веб-разработка",
+    desc: "Лендинги, корпоративные сайты и мини-приложения — от дизайна до запуска за 7 дней.",
+    bullets: ["Лендинги с высокой конверсией", "Корпоративные сайты", "Мини-приложения и SPA"],
+    id: "web-dev",
   },
-]
+];
 
 export function ServicesSection() {
-  return (
-    <section id="services" className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/5 animate-pulse" />
+  const scrollTo = (href: string, e: React.MouseEvent) => {
+    e.preventDefault();
+    const el = document.querySelector(href);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
 
-      <div className="container mx-auto max-w-5xl relative z-10">
-        <div className="text-center mb-8 sm:mb-10">
-          <div className="inline-block mb-3 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-semibold">
-            Наша экспертиза
+  return (
+    <section
+      id="services"
+      className="section-padding"
+      style={{ background: "var(--nf-bg)" }}
+    >
+      <div className="max-w-7xl mx-auto px-6">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <div
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4 mono text-xs"
+            style={{
+              background: "rgba(99,102,241,0.1)",
+              border: "1px solid rgba(99,102,241,0.2)",
+              color: "var(--nf-cyan)",
+            }}
+          >
+            03 направления
           </div>
-          <h2 className="text-2xl sm:text-4xl font-bold mb-3 text-balance">
-            Всё для <span className="text-primary">роста онлайн</span>
+          <h2
+            className="text-3xl md:text-5xl font-bold mb-4"
+            style={{ color: "var(--nf-text)" }}
+          >
+            Всё, что нужно для{" "}
+            <span className="gradient-text">цифрового роста</span>
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto text-sm sm:text-base">
-            Один партнёр — полный результат.
+          <p
+            className="text-lg max-w-2xl mx-auto"
+            style={{ color: "var(--nf-muted)" }}
+          >
+            Один партнёр закрывает три направления. Никакого зоопарка подрядчиков.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {services.map((service, index) => (
-            <Card
-              key={index}
-              className="group hover:border-primary transition-all duration-300 hover:shadow-lg bg-background/50 backdrop-blur-sm"
-            >
-              <CardHeader className="pb-2">
-                <div className="mb-3 inline-flex p-2.5 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
-                  <service.icon className="h-5 w-5" />
-                </div>
-                <CardTitle className="text-base sm:text-lg group-hover:text-primary transition-colors">{service.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-sm leading-relaxed">{service.description}</CardDescription>
-              </CardContent>
-            </Card>
+        {/* Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {services.map((s, i) => (
+            <div key={i} className="glass-card p-8 flex flex-col group">
+              {/* Icon */}
+              <div
+                className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6"
+                style={{ background: `${s.color}18`, border: `1px solid ${s.color}30` }}
+              >
+                <Icon name={s.icon as any} size={26} style={{ color: s.color }} />
+              </div>
+
+              {/* Title */}
+              <h3
+                className="text-xl font-bold mb-3"
+                style={{ color: "var(--nf-text)" }}
+              >
+                {s.label}
+              </h3>
+
+              {/* Desc */}
+              <p
+                className="text-sm leading-relaxed mb-6"
+                style={{ color: "var(--nf-muted)" }}
+              >
+                {s.desc}
+              </p>
+
+              {/* Bullets */}
+              <ul className="space-y-3 flex-1 mb-8">
+                {s.bullets.map((b, j) => (
+                  <li key={j} className="flex items-center gap-3">
+                    <div
+                      className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+                      style={{ background: s.color }}
+                    />
+                    <span
+                      className="text-sm"
+                      style={{ color: "var(--nf-text)" }}
+                    >
+                      {b}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+
+              {/* CTA */}
+              <a
+                href="#contact"
+                onClick={(e) => scrollTo("#contact", e)}
+                className="flex items-center gap-2 text-sm font-semibold transition-all duration-200 group-hover:gap-3"
+                style={{ color: s.color }}
+              >
+                Подробнее
+                <Icon name="ArrowRight" size={15} />
+              </a>
+            </div>
           ))}
         </div>
       </div>
     </section>
-  )
+  );
 }

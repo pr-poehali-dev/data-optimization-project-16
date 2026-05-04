@@ -1,69 +1,203 @@
-import { Button } from "@/components/ui/button"
-import { ArrowRight } from "lucide-react"
+import { useEffect, useRef } from "react";
+import Icon from "@/components/ui/icon";
+
+const STATS = [
+  { value: "50+", label: "проектов запущено" },
+  { value: "7", label: "дней до запуска" },
+  { value: "3x", label: "рост конверсии в среднем" },
+];
 
 export function HeroSection() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    let animId: number;
+    const resize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+    resize();
+    window.addEventListener("resize", resize);
+
+    const particles: { x: number; y: number; vx: number; vy: number; r: number; alpha: number }[] = [];
+    for (let i = 0; i < 60; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: (Math.random() - 0.5) * 0.4,
+        r: Math.random() * 2 + 0.5,
+        alpha: Math.random() * 0.5 + 0.2,
+      });
+    }
+
+    const draw = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach((p) => {
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0) p.x = canvas.width;
+        if (p.x > canvas.width) p.x = 0;
+        if (p.y < 0) p.y = canvas.height;
+        if (p.y > canvas.height) p.y = 0;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(99,102,241,${p.alpha})`;
+        ctx.fill();
+      });
+
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 120) {
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = `rgba(99,102,241,${0.12 * (1 - dist / 120)})`;
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          }
+        }
+      }
+
+      animId = requestAnimationFrame(draw);
+    };
+    draw();
+
+    return () => {
+      cancelAnimationFrame(animId);
+      window.removeEventListener("resize", resize);
+    };
+  }, []);
+
+  const scrollTo = (href: string, e: React.MouseEvent) => {
+    e.preventDefault();
+    const el = document.querySelector(href);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <section className="relative min-h-[80vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden">
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div
-          className="absolute w-[400px] h-[400px] rounded-full bg-muted/40 blur-3xl animate-pulse"
-          style={{ top: "20%", left: "10%", animationDuration: "4s" }}
-        />
-        <div
-          className="absolute w-[300px] h-[300px] rounded-full bg-muted/30 blur-3xl animate-pulse"
-          style={{ bottom: "10%", right: "15%", animationDuration: "6s", animationDelay: "1s" }}
-        />
-      </div>
+    <section
+      id="home"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      style={{ background: "var(--nf-bg)" }}
+    >
+      {/* Canvas particles */}
+      <canvas
+        ref={canvasRef}
+        className="absolute inset-0 pointer-events-none"
+        style={{ opacity: 0.7 }}
+      />
 
-      <div className="container mx-auto text-center max-w-4xl relative z-10 py-12 sm:py-16">
-        <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight mb-4 sm:mb-5 animate-fade-in-up text-balance">
-          Сайты, которые{" "}
-          <span className="text-primary relative inline-block">
-            продают
-            <svg className="absolute -bottom-2 left-0 w-full" height="10" viewBox="0 0 200 10" fill="none">
-              <path d="M2 8C50 3 150 3 198 8" stroke="currentColor" strokeWidth="3" strokeLinecap="round" className="text-primary" />
-            </svg>
+      {/* Grid bg */}
+      <div className="absolute inset-0 grid-bg opacity-40 pointer-events-none" />
+
+      {/* Orbs */}
+      <div
+        className="orb orb-indigo"
+        style={{ width: 500, height: 500, top: "-10%", left: "-10%", opacity: 0.25 }}
+      />
+      <div
+        className="orb orb-cyan"
+        style={{ width: 400, height: 400, bottom: "-5%", right: "-5%", opacity: 0.2 }}
+      />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-24 pb-20 md:pt-32 text-center">
+        {/* Badge */}
+        <div
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8 animate-fade-in-up"
+          style={{
+            background: "rgba(99,102,241,0.1)",
+            border: "1px solid rgba(99,102,241,0.25)",
+          }}
+        >
+          <span
+            className="w-2 h-2 rounded-full animate-pulse"
+            style={{ background: "var(--nf-green)" }}
+          />
+          <span className="mono text-xs" style={{ color: "var(--nf-cyan)" }}>
+            AI-агентство полного цикла
           </span>
-        </h1>
-
-        <p className="text-sm sm:text-lg text-muted-foreground mb-7 sm:mb-9 max-w-xl mx-auto animate-fade-in-up leading-relaxed">
-          От идеи до запуска — под ключ, в срок, с результатом.
-        </p>
-
-        <div className="flex flex-col sm:flex-row gap-3 justify-center items-center animate-fade-in-up mb-8 sm:mb-10">
-          <Button
-            size="lg"
-            className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold w-full sm:w-auto px-7 py-5 text-base group shadow-lg shadow-primary/25 transition-all"
-            asChild
-          >
-            <a href="#contact">
-              Обсудить проект
-              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-            </a>
-          </Button>
-          <Button
-            size="lg"
-            variant="outline"
-            className="border-2 border-primary/20 text-foreground hover:bg-primary/5 hover:border-primary font-semibold w-full sm:w-auto px-7 py-5 text-base bg-transparent"
-            asChild
-          >
-            <a href="#portfolio">Смотреть работы</a>
-          </Button>
         </div>
 
-        <div className="flex flex-wrap justify-center items-center gap-8 sm:gap-12 animate-fade-in-up">
-          {[
-            { value: "50+", label: "проектов" },
-            { value: "45+", label: "клиентов" },
-            { value: "3+", label: "года опыта" },
-          ].map((stat, i) => (
+        {/* H1 */}
+        <h1
+          className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 animate-fade-in-up delay-100"
+          style={{ color: "var(--nf-text)", lineHeight: 1.1 }}
+        >
+          Контент. Автоматизация.{" "}
+          <br className="hidden md:block" />
+          <span className="gradient-text">Цифровые решения.</span>
+        </h1>
+
+        {/* Subheadline */}
+        <p
+          className="text-lg md:text-xl max-w-2xl mx-auto mb-10 animate-fade-in-up delay-200 leading-relaxed"
+          style={{ color: "var(--nf-muted)" }}
+        >
+          Запускаем цифровые решения за 7 дней. Без штата программистов.{" "}
+          <span style={{ color: "var(--nf-text)" }}>С измеримым ROI.</span>
+        </p>
+
+        {/* CTAs */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 animate-fade-in-up delay-300">
+          <a
+            href="#contact"
+            onClick={(e) => scrollTo("#contact", e)}
+            className="btn-cta flex items-center gap-2 w-full sm:w-auto justify-center"
+          >
+            Рассчитать проект
+            <Icon name="ArrowRight" size={18} />
+          </a>
+          <a
+            href="#portfolio"
+            onClick={(e) => scrollTo("#portfolio", e)}
+            className="btn-outline flex items-center gap-2 w-full sm:w-auto justify-center"
+          >
+            <Icon name="Play" size={16} />
+            Смотреть кейсы
+          </a>
+        </div>
+
+        {/* Stats */}
+        <div
+          className="inline-flex flex-col sm:flex-row items-center gap-6 sm:gap-12 px-8 py-5 rounded-2xl animate-fade-in-up delay-400"
+          style={{
+            background: "rgba(255,255,255,0.03)",
+            border: "1px solid var(--nf-border)",
+          }}
+        >
+          {STATS.map((s, i) => (
             <div key={i} className="text-center">
-              <div className="text-3xl sm:text-4xl font-bold text-primary">{stat.value}</div>
-              <div className="text-xs sm:text-sm text-muted-foreground mt-1">{stat.label}</div>
+              <div
+                className="text-3xl font-bold mb-1 gradient-text"
+              >
+                {s.value}
+              </div>
+              <div className="text-sm" style={{ color: "var(--nf-muted)" }}>
+                {s.label}
+              </div>
             </div>
           ))}
         </div>
+
+        {/* Scroll hint */}
+        <div
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-float"
+          style={{ color: "var(--nf-muted)" }}
+        >
+          <span className="text-xs font-medium mono">scroll</span>
+          <Icon name="ChevronDown" size={16} />
+        </div>
       </div>
     </section>
-  )
+  );
 }
