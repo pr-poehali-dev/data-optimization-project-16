@@ -1,0 +1,31 @@
+{
+  "tests": [
+    {
+      "name": "OPTIONS preflight",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200
+    },
+    {
+      "name": "Отправка заявки",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "name": "Тест",
+        "contact": "@testuser",
+        "service": "Лендинг или корпоративный сайт",
+        "comment": "Хочу сайт"
+      },
+      "expectedStatus": 200,
+      "expectedBody": { "ok": true },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Пустые обязательные поля",
+      "method": "POST",
+      "path": "/",
+      "body": { "name": "", "contact": "" },
+      "expectedStatus": 400
+    }
+  ]
+}

@@ -9,9 +9,15 @@ const navLinks = [
 ];
 
 const socials = [
-  { icon: "Send", label: "Telegram", href: "https://t.me/neuroflow_ai" },
+  { icon: "Send", label: "Telegram", href: "https://t.me/Neyrovid" },
   { icon: "Instagram", label: "Instagram", href: "#" },
   { icon: "Linkedin", label: "LinkedIn", href: "#" },
+];
+
+const contacts = [
+  { icon: "Mail", label: "neuroflow9@gmail.com", href: "mailto:neuroflow9@gmail.com", color: "var(--nf-indigo)" },
+  { icon: "Phone", label: "+7 978 686-11-68", href: "tel:+79786861168", color: "var(--nf-cyan)" },
+  { icon: "Send", label: "@Neyrovid", href: "https://t.me/Neyrovid", color: "var(--nf-green)" },
 ];
 
 export function Footer() {
@@ -33,7 +39,7 @@ export function Footer() {
       }}
     >
       <div className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-10 mb-12">
           {/* Brand */}
           <div className="md:col-span-2">
             <a
@@ -112,6 +118,38 @@ export function Footer() {
                     }}
                   >
                     {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contacts */}
+          <div>
+            <h4
+              className="text-sm font-semibold mb-4 mono"
+              style={{ color: "var(--nf-text)" }}
+            >
+              Контакты
+            </h4>
+            <ul className="space-y-3">
+              {contacts.map((c) => (
+                <li key={c.href}>
+                  <a
+                    href={c.href}
+                    target={c.href.startsWith("http") ? "_blank" : undefined}
+                    rel={c.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                    className="flex items-center gap-2.5 text-sm transition-colors duration-200 group"
+                    style={{ color: "var(--nf-muted)" }}
+                    onMouseEnter={(e) => {
+                      (e.currentTarget as HTMLElement).style.color = c.color;
+                    }}
+                    onMouseLeave={(e) => {
+                      (e.currentTarget as HTMLElement).style.color = "var(--nf-muted)";
+                    }}
+                  >
+                    <Icon name={c.icon as any} size={14} style={{ color: c.color, flexShrink: 0 }} />
+                    {c.label}
                   </a>
                 </li>
               ))}
