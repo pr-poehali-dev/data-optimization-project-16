@@ -26,60 +26,55 @@ export function Footer() {
       }}
     >
       <div className="max-w-7xl mx-auto px-6 py-14">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-10">
-
-          {/* Brand */}
-          <div>
+        {/* Contacts row */}
+        <div className="flex flex-wrap gap-4 mb-10">
+          {contacts.map((c) => (
             <a
-              href="#"
-              onClick={(e) => scrollTo("#", e)}
-              className="flex items-center gap-3 mb-4 hover:opacity-90 transition-opacity"
+              key={c.href}
+              href={c.href}
+              target={c.href.startsWith("http") ? "_blank" : undefined}
+              rel={c.href.startsWith("http") ? "noopener noreferrer" : undefined}
+              className="flex items-center gap-2 text-sm transition-colors duration-200 px-4 py-2.5 rounded-xl"
+              style={{
+                color: "var(--nf-muted)",
+                background: "rgba(255,255,255,0.04)",
+                border: "1px solid var(--nf-border)",
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLElement).style.color = c.color;
+                (e.currentTarget as HTMLElement).style.borderColor = c.color + "40";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLElement).style.color = "var(--nf-muted)";
+                (e.currentTarget as HTMLElement).style.borderColor = "var(--nf-border)";
+              }}
             >
-              <img
-                src="https://cdn.poehali.dev/projects/3ac90158-e371-49c9-8dba-507fa6fdb827/bucket/23ce61da-0272-4004-82f6-d909a64ed510.png"
-                alt="NEUROFLOW"
-                className="h-9 w-auto"
-              />
-              <span className="font-bold text-xl" style={{ color: "var(--nf-text)" }}>
-                NEURO<span className="gradient-text">FLOW</span>
-              </span>
+              <Icon name={c.icon as any} size={14} style={{ color: c.color, flexShrink: 0 }} />
+              {c.label}
             </a>
-            <p
-              className="text-sm leading-relaxed max-w-xs"
-              style={{ color: "var(--nf-muted)" }}
-            >
-              ИИ-агентство полного цикла: контент, автоматизация, веб-разработка.
-              Запускаем цифровые решения с измеримым ROI.
-            </p>
-          </div>
+          ))}
+        </div>
 
-          {/* Contacts */}
-          <div>
-            <h4 className="text-sm font-semibold mb-4 mono" style={{ color: "var(--nf-text)" }}>
-              Контакты
-            </h4>
-            <ul className="space-y-3">
-              {contacts.map((c) => (
-                <li key={c.href}>
-                  <a
-                    href={c.href}
-                    target={c.href.startsWith("http") ? "_blank" : undefined}
-                    rel={c.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                    className="flex items-center gap-2.5 text-sm transition-colors duration-200"
-                    style={{ color: "var(--nf-muted)" }}
-                    onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = c.color; }}
-                    onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--nf-muted)"; }}
-                  >
-                    <Icon name={c.icon as any} size={14} style={{ color: c.color, flexShrink: 0 }} />
-                    {c.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-
-
+        {/* Brand */}
+        <div className="mb-10">
+          <a
+            href="#"
+            onClick={(e) => scrollTo("#", e)}
+            className="flex items-center gap-3 mb-3 hover:opacity-90 transition-opacity w-fit"
+          >
+            <img
+              src="https://cdn.poehali.dev/projects/3ac90158-e371-49c9-8dba-507fa6fdb827/bucket/23ce61da-0272-4004-82f6-d909a64ed510.png"
+              alt="NEUROFLOW"
+              className="h-9 w-auto"
+            />
+            <span className="font-bold text-xl" style={{ color: "var(--nf-text)" }}>
+              NEURO<span className="gradient-text">FLOW</span>
+            </span>
+          </a>
+          <p className="text-sm leading-relaxed max-w-sm" style={{ color: "var(--nf-muted)" }}>
+            ИИ-агентство полного цикла: контент, автоматизация, веб-разработка.
+            Запускаем цифровые решения с измеримым ROI.
+          </p>
         </div>
 
         {/* Bottom bar */}
